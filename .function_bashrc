@@ -3,3 +3,7 @@ tnvim() {
   touch $1
   nvim $1
 }
+
+mygrep() {
+  grep --ignore-case $1
+}
