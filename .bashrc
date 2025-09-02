@@ -14,3 +14,4 @@ if [[ $USER="isaak" ]]; then
 else
   PS1="[\[\e[0;31m\]\u\[\e[0m\]@\h\[\e[0m\] \[\e[1;35m\]\W\[\e[0m\] \$]"
 fi
+echo "Welcome"

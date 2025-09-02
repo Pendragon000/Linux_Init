@@ -20,3 +20,7 @@ git config --global core.editor "nvim"
 
 rsync -r ~/Linux_Init/.config ~/.config
 rsync -r ~/Linux_Init/bin ~/
+
+cat ./.bashrc >~/.bashrc
+cat ./.function_bashrc >~/.function_bashrc
+cat ./.alias_bashrc >~/.alias_bashrc
