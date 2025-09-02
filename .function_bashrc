@@ -1,0 +1,5 @@
+#Make file and open with neovim
+tnvim() {
+  touch $1
+  nvim $1
+}
