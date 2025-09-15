@@ -1,10 +1,26 @@
 #!/bin/bash
-
+current_dir=$(pwd)
 mkdir ~/Documents
 mkdir ~/Documents/CEGEP
 mkdir ~/Documents/projets
 
-sudo pacman -Sy git neovim gcc gdb python python-pip rsync
+if [ -f /etc/os-release ]; then
+  . /etc/os-release
+  distro=$ID
+else
+  exit 1
+fi
+
+if [[ "$distro" == "arch" ]]; then
+  echo "Detected Arch Linux"
+  sudo pacman -Sy git neovim gcc gdb python python-pip rsync
+elif [[ "$distro" == "fedora" ]]; then
+  echo "Detected Fedora"
+  sudo dnf install -y git neovim gcc gdb python3 python3-pip rsync
+else
+  echo "Unsupported distribution: $distro"
+  exit 1
+fi
 
 git --version
 nvim --version
@@ -18,8 +34,8 @@ git config --global user.email "isaakfortnite56@gmail.com"
 git config --global user.username "Pendragon000"
 git config --global core.editor "nvim"
 
-rsync -r ~/Linux_Init/.config ~/.config
-rsync -r ~/Linux_Init/bin ~/
+rsync -r $current_dir/.config ~/.config
+rsync -r $current_dir/bin ~/
 
 cat ./.bashrc >~/.bashrc
 cat ./.function_bashrc >~/.function_bashrc
