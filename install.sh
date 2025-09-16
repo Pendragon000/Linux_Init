@@ -13,10 +13,10 @@ fi
 
 if [[ "$distro" == "arch" ]]; then
   echo "Detected Arch Linux"
-  sudo pacman -Sy git neovim gcc gdb python python-pip rsync
+  sudo pacman -Sy git neovim gcc gdb python python-pip rsync wireshark wireshark-cli
 elif [[ "$distro" == "fedora" ]]; then
   echo "Detected Fedora"
-  sudo dnf install -y git neovim gcc gdb python3 python3-pip rsync
+  sudo dnf install -y git neovim gcc gdb python3 python3-pip rsync wireshark-qt wireshark-cli
 else
   echo "Unsupported distribution: $distro"
   exit 1
@@ -28,6 +28,8 @@ gcc --version
 gdb --version
 python3 --version
 pip3 --version
+rsync --version
+wireshark --version
 
 git config --global user.name "Isaak Fortin"
 git config --global user.email "isaakfortnite56@gmail.com"
