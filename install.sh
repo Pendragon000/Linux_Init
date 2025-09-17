@@ -39,6 +39,9 @@ git config --global core.editor "nvim"
 rsync -r $current_dir/.config ~/.config
 rsync -r $current_dir/bin ~/
 
+# Download Sqlmap
+git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git ~/sqlmap
+
 cat ./.bashrc >~/.bashrc
 cat ./.function_bashrc >~/.function_bashrc
 cat ./.alias_bashrc >~/.alias_bashrc
