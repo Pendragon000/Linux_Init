@@ -10,18 +10,18 @@ if [ -f /etc/os-release ]; then
 else
   exit 1
 fi
-
+# Installation des packet selon le distro
 if [[ "$distro" == "arch" ]]; then
   echo "Detected Arch Linux"
-  sudo pacman -Sy git neovim gcc gdb python python-pip rsync wireshark wireshark-cli
+  sudo pacman -Sy git neovim gcc gdb python python-pip rsync wireshark wireshark-cli curl
 elif [[ "$distro" == "fedora" ]]; then
   echo "Detected Fedora"
-  sudo dnf install -y git neovim gcc gdb python3 python3-pip rsync wireshark-qt wireshark-cli
+  sudo dnf install -y git neovim gcc gdb python3 python3-pip rsync wireshark-qt wireshark-cli curl
 else
   echo "Unsupported distribution: $distro"
   exit 1
 fi
-
+# Verifie l'instalation
 git --version
 nvim --version
 gcc --version
@@ -30,12 +30,15 @@ python3 --version
 pip3 --version
 rsync --version
 wireshark --version
+curl --version
+# Download gef pour gdb
+bash -c "$(curl -fsSL https://gef.blah.cat/sh)"
 
 git config --global user.name "Isaak Fortin"
 git config --global user.email "isaakfortnite56@gmail.com"
 git config --global user.username "Pendragon000"
 git config --global core.editor "nvim"
-
+# Syncronization de mes fichier
 rsync -r $current_dir/.config ~/.config
 rsync -r $current_dir/bin ~/
 
