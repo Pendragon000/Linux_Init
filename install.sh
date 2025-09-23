@@ -88,6 +88,10 @@ git config --global user.name "Isaak Fortin"
 git config --global user.email "isaakfortnite56@gmail.com"
 git config --global user.username "Pendragon000"
 git config --global core.editor "nvim"
+# Cloning .config
+git clone --depth 1 https://github.com/Pendragon000/.config "$current_dir/.config"
+rm -rf "$current_dir/.config/README.md"
+rm -rf "$current_dir/.config/.git"
 # Syncronization de mes fichier
 rsync -a "$current_dir/.config" "$HOME/.config"
 rsync -a "$current_dir/bin" "$HOME/bin/"
