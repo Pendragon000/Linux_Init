@@ -7,7 +7,6 @@
 
 source ~/.alias_bashrc
 source ~/.function_bashrc
-export PATH="~/bin:$PATH"
 
 if [[ $USER="isaak" ]]; then
   PS1="[\[\e[0;31m\]@\h\[\e[0m\] \[\e[1;35m\]\W\[\e[0m\] \$]"
