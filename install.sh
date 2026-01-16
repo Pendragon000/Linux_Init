@@ -33,34 +33,19 @@ else
 fi
 
 # Installation des packet selon le distro
-if [[ "$distro" == "arch" ]]; then
-  echo "Detected Arch Linux"
-  #Basic install
-  sudo pacman -Sy git neovim rsync curl
-  #Debuging Tools
-  sudo pacman -Sy gcc gdb python python-pip
-  #Network Tools
-  sudo pacman -Sy wireshark-qt wireshark-cli
-  #yay install & set up
-  REPO_YAY_DIR="$HOME/yay"
-  if [ ! -d "$REPO_YAY_DIR"]; then
-    git clone --depth 1 https://aur.archlinux.org/yay.git "$REPO_YAY_DIR"
-  else
-    echo "Repository already cloned at $REPO_YAY_DIR"
-  fi
-  cd yay
-  makepkg -si
-  #yay Installs
-  yay -S ghidra
-elif [[ "$distro" == "fedora" ]]; then
+if [[ "$distro" == "fedora" ]]; then
   new_path='export PATH="$HOME/bin:/snap/bin:$PATH"'
   echo "Detected Fedora"
+
   #Basic install
-  sudo dnf install -y git neovim rsync curl
+  sudo dnf install -y git neovim rsync curl hyfetch fastfetch
+
   #Debuging Tools
   sudo dnf install -y gcc gdb python3 python3-pip snapd
+
   #Network Tools
   sudo dnf install -y wireshark wireshark-cli
+
   #Snap Installs
   sudo snap install ghidra
   sudo systemctl enable --now snapd.socket
@@ -81,6 +66,9 @@ check_installed rsync
 check_installed wireshark
 check_installed curl
 check_installed ghidra
+check_installed fastfetch
+check_installed hyfetch
+
 # Download gef pour gdb
 bash -c "$(curl -fsSL https://gef.blah.cat/sh)"
 
@@ -88,10 +76,12 @@ git config --global user.name "Isaak Fortin"
 git config --global user.email "isaakfortnite56@gmail.com"
 git config --global user.username "Pendragon000"
 git config --global core.editor "nvim"
+
 # Cloning .config
 git clone --depth 1 https://github.com/Pendragon000/.config "$current_dir/.config"
 rm -rf "$current_dir/.config/README.md"
 rm -rf "$current_dir/.config/.git"
+
 # Syncronization de mes fichier
 rsync -a "$current_dir/.config" "$HOME/.config"
 rsync -a "$current_dir/bin" "$HOME/bin/"
@@ -105,3 +95,4 @@ else
 fi
 
 echo $new_path >>$HOME/.bashrc
+clear
