@@ -44,7 +44,7 @@ if [[ "$distro" == "fedora" ]]; then
   sudo dnf install -y gcc gdb python3 python3-pip snapd
 
   #Network Tools
-  sudo dnf install -y wireshark wireshark-cli
+  sudo dnf install -y wireshark wireshark-cli gobuster
 
   #Snap Installs
   sudo snap install ghidra
