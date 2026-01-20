@@ -83,8 +83,8 @@ rm -rf "$current_dir/.config/README.md"
 rm -rf "$current_dir/.config/.git"
 
 # Syncronization de mes fichier
-rsync -a "$current_dir/.config" "$HOME/.config"
-rsync -a "$current_dir/bin" "$HOME/bin/"
+rsync -a "$current_dir/.config" "$HOME/"
+rsync -a "$current_dir/bin" "$HOME/"
 
 # Download Sqlmap
 REPO_SQLMAP_DIR="$HOME/sqlmap"
