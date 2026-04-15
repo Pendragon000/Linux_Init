@@ -44,7 +44,7 @@ if [[ "$distro" == "fedora" ]]; then
   sudo dnf install -y gcc gdb python3 python3-pip snapd
 
   #Network Tools
-  sudo dnf install -y wireshark wireshark-cli
+  sudo dnf install -y wireshark wireshark-cli gobuster
 
   #Snap Installs
   sudo snap install ghidra
@@ -82,8 +82,8 @@ git clone --depth 1 https://github.com/Pendragon000/.config "$current_dir/.confi
 rm -rf "$current_dir/.config/.git"
 
 # Syncronization de mes fichier
-rsync -a "$current_dir/.config" "$HOME/.config"
-rsync -a "$current_dir/bin" "$HOME/bin/"
+rsync -a "$current_dir/.config" "$HOME/"
+rsync -a "$current_dir/bin" "$HOME/"
 
 # Download Sqlmap
 REPO_SQLMAP_DIR="$HOME/sqlmap"
