@@ -79,7 +79,6 @@ git config --global core.editor "nvim"
 
 # Cloning .config
 git clone --depth 1 https://github.com/Pendragon000/.config "$current_dir/.config"
-rm -rf "$current_dir/.config/README.md"
 rm -rf "$current_dir/.config/.git"
 
 # Syncronization de mes fichier
